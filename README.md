@@ -4,24 +4,74 @@ A Python producer publishes orders to RabbitMQ. Independent worker processes com
 
 ## Architecture
 
-```text
-                        RabbitMQ (independent broker)
-Order Producer ──JSON──> durable queue: orders
-                              │       │
-                 one delivery │       │ one delivery
-                              ▼       ▼
-                          Worker A  Worker B
-                              │       │
-                              └───┬───┘
-                                  ▼
-                      shared data/processed.jsonl
-                    (completed orders + event IDs)
+### Components and message flow
 
-Worker ──ACK after durable completion / duplicate check──> RabbitMQ
-Worker exits before ACK ──> RabbitMQ requeues ──> surviving worker
+```mermaid
+flowchart TB
+    P["Order producer<br/>producer.py<br/>Publishes persistent JSON orders"]
+
+    subgraph Broker["RabbitMQ · independent broker process"]
+        X["Default exchange<br/>Routing key: orders"]
+        Q[("Durable queue<br/>orders")]
+        X --> Q
+    end
+
+    subgraph Consumers["Competing consumers · independent worker processes"]
+        A["Worker A<br/>Manual ACK · prefetch 1"]
+        B["Worker B<br/>Manual ACK · prefetch 1"]
+    end
+
+    J[("Shared completed-order journal<br/>data/processed.jsonl<br/>File lock + flush + fsync")]
+
+    P -->|"Publish · wait for broker confirmation"| X
+    Q -->|"Deliver to one available worker"| A
+    Q -->|"Deliver to one available worker"| B
+    A -->|"Check event_id · append only if new"| J
+    B -->|"Check event_id · append only if new"| J
+    A -. "ACK after completion or duplicate check" .-> Q
+    B -. "ACK after completion or duplicate check" .-> Q
+
+    classDef producer fill:#dcfce7,stroke:#15803d,color:#14532d
+    classDef exchange fill:#ede9fe,stroke:#7c3aed,color:#4c1d95
+    classDef queue fill:#fef3c7,stroke:#d97706,color:#78350f
+    classDef worker fill:#dbeafe,stroke:#2563eb,color:#1e3a8a
+    classDef journal fill:#ccfbf1,stroke:#0f766e,color:#134e4a
+    class P producer
+    class X exchange
+    class Q queue
+    class A,B worker
+    class J journal
 ```
 
-The producer, each worker, and the broker run independently. Messages use the default exchange and the queue name as their routing key. Workers use manual acknowledgments (`auto_ack=False`) and `prefetch_count=1`, allowing one unacknowledged order per worker. RabbitMQ assigns each normal delivery to one consumer of this queue; it can deliver the same event again after failure.
+Solid arrows show publication, delivery, and journal access; dashed arrows show worker acknowledgments. The two delivery arrows represent competing consumers: each delivery goes to one available worker. Workers use manual acknowledgments (`auto_ack=False`) and `prefetch_count=1`, allowing one unacknowledged order per worker. Both workers use the same journal so duplicate detection works across processes and worker restarts.
+
+### Recovery when a worker stops before ACK
+
+This sequence shows the crash after saving the order but before acknowledging it. RabbitMQ redelivers the message, and the surviving worker uses the journal to avoid repeating the completed business action.
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant R as RabbitMQ
+    participant A as Worker A
+    participant J as Shared journal
+    participant B as Worker B
+
+    R->>A: Deliver order with event_id
+    Note over R,A: Delivery remains unacknowledged
+    A->>J: Lock, check event_id, append order, flush + fsync
+    J-->>A: Order saved, release lock
+    Note over A: Process stops before sending ACK
+    Note over R: Detect closed connection and requeue
+    R->>B: Redeliver same event_id (redelivered=true)
+    B->>J: Lock and check event_id
+    J-->>B: Event already completed, release lock
+    Note over B: Log DUPLICATE and skip business action
+    B->>R: ACK the redelivered message
+    Note over R,B: Broker and surviving worker continue running
+```
+
+If a worker stops before saving the order, the journal has no completed entry. The surviving worker processes that redelivery, saves the order, and then sends its ACK. Both crash cases are demonstrated in the evidence below.
 
 An order contains these fields:
 
