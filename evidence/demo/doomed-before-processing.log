@@ -1,0 +1,3 @@
+{"action": "READY", "pid": 4311, "prefetch": 1, "queue": "orders-demo-before-processing-7565dd99", "time": "2026-10-25T05:00:28.769078+00:00", "worker": "doomed-before-processing"}
+{"action": "RECEIVED", "event_id": "failure-before-processing", "item_id": "item-001", "order_id": "order-001", "quantity": 1, "redelivered": false, "time": "2026-10-25T05:00:28.882166+00:00", "worker": "doomed-before-processing"}
+{"action": "CRASH_BEFORE_ACK", "event_id": "failure-before-processing", "exit_code": 42, "stage": "before-processing", "time": "2026-10-25T05:00:31.883356+00:00", "worker": "doomed-before-processing"}

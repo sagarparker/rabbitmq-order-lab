@@ -1,0 +1,2 @@
+{"event_id": "failure-after-processing", "order_id": "order-001", "item_id": "item-001", "quantity": 1, "processed_by": "doomed-after-processing"}
+{"event_id": "followup-after-processing", "order_id": "order-001", "item_id": "item-001", "quantity": 1, "processed_by": "survivor-after-processing"}

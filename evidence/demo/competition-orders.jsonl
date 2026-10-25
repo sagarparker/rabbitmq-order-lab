@@ -1,0 +1,7 @@
+{"event_id": "68876eb3-6f58-4367-b794-84339cca5333", "order_id": "order-001", "item_id": "item-001", "quantity": 1, "processed_by": "worker-A"}
+{"event_id": "3f85b4e3-90b9-4f37-b499-3ae1f776fac4", "order_id": "order-002", "item_id": "item-001", "quantity": 1, "processed_by": "worker-B"}
+{"event_id": "842b88aa-b846-423c-a9dd-c629324ce405", "order_id": "order-004", "item_id": "item-001", "quantity": 1, "processed_by": "worker-B"}
+{"event_id": "2704a7ae-6b0f-44c3-94c1-53dd92817a6a", "order_id": "order-003", "item_id": "item-001", "quantity": 1, "processed_by": "worker-A"}
+{"event_id": "3bf37a8a-35db-47f1-bc7b-fe454872e93c", "order_id": "order-005", "item_id": "item-001", "quantity": 1, "processed_by": "worker-B"}
+{"event_id": "18a1b677-03bc-4643-852c-f23195dcdbe4", "order_id": "order-006", "item_id": "item-001", "quantity": 1, "processed_by": "worker-A"}
+{"event_id": "duplicate-demo", "order_id": "order-001", "item_id": "item-001", "quantity": 1, "processed_by": "worker-A"}

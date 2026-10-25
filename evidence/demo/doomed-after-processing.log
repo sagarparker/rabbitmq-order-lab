@@ -1,0 +1,5 @@
+{"action": "READY", "pid": 4319, "prefetch": 1, "queue": "orders-demo-after-processing-027bf9e6", "time": "2026-10-25T05:00:32.543701+00:00", "worker": "doomed-after-processing"}
+{"action": "RECEIVED", "event_id": "failure-after-processing", "item_id": "item-001", "order_id": "order-001", "quantity": 1, "redelivered": false, "time": "2026-10-25T05:00:32.643907+00:00", "worker": "doomed-after-processing"}
+{"action": "PROCESSING", "event_id": "failure-after-processing", "item_id": "item-001", "order_id": "order-001", "quantity": 1, "time": "2026-10-25T05:00:35.646546+00:00", "worker": "doomed-after-processing"}
+{"action": "PROCESSED", "event_id": "failure-after-processing", "item_id": "item-001", "order_id": "order-001", "quantity": 1, "time": "2026-10-25T05:00:35.647256+00:00", "worker": "doomed-after-processing"}
+{"action": "CRASH_BEFORE_ACK", "event_id": "failure-after-processing", "exit_code": 42, "stage": "after-processing", "time": "2026-10-25T05:00:35.647498+00:00", "worker": "doomed-after-processing"}

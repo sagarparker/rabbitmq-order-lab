@@ -1,0 +1,8 @@
+{"action": "READY", "pid": 4321, "prefetch": 1, "queue": "orders-demo-after-processing-027bf9e6", "time": "2026-10-25T05:00:32.717900+00:00", "worker": "survivor-after-processing"}
+{"action": "RECEIVED", "event_id": "failure-after-processing", "item_id": "item-001", "order_id": "order-001", "quantity": 1, "redelivered": true, "time": "2026-10-25T05:00:35.654557+00:00", "worker": "survivor-after-processing"}
+{"action": "DUPLICATE", "detail": "business action skipped", "event_id": "failure-after-processing", "time": "2026-10-25T05:00:35.856756+00:00", "worker": "survivor-after-processing"}
+{"action": "ACK_SENT", "event_id": "failure-after-processing", "time": "2026-10-25T05:00:35.857356+00:00", "worker": "survivor-after-processing"}
+{"action": "RECEIVED", "event_id": "followup-after-processing", "item_id": "item-001", "order_id": "order-001", "quantity": 1, "redelivered": false, "time": "2026-10-25T05:00:35.990230+00:00", "worker": "survivor-after-processing"}
+{"action": "PROCESSING", "event_id": "followup-after-processing", "item_id": "item-001", "order_id": "order-001", "quantity": 1, "time": "2026-10-25T05:00:36.192403+00:00", "worker": "survivor-after-processing"}
+{"action": "PROCESSED", "event_id": "followup-after-processing", "item_id": "item-001", "order_id": "order-001", "quantity": 1, "time": "2026-10-25T05:00:36.192942+00:00", "worker": "survivor-after-processing"}
+{"action": "ACK_SENT", "event_id": "followup-after-processing", "time": "2026-10-25T05:00:36.193524+00:00", "worker": "survivor-after-processing"}

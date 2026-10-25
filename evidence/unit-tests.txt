@@ -1,0 +1,7 @@
+test_concurrent_workers_write_one_business_action (test_event_store.EventStoreTests.test_concurrent_workers_write_one_business_action) ... ok
+test_invalid_orders_are_rejected (test_event_store.EventStoreTests.test_invalid_orders_are_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.101s
+
+OK

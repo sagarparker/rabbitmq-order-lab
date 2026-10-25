@@ -1,0 +1,17 @@
+{"action": "READY", "pid": 4304, "prefetch": 1, "queue": "orders-demo-competition-249edf56", "time": "2026-10-25T05:00:27.239978+00:00", "worker": "worker-A"}
+{"action": "RECEIVED", "event_id": "68876eb3-6f58-4367-b794-84339cca5333", "item_id": "item-001", "order_id": "order-001", "quantity": 1, "redelivered": false, "time": "2026-10-25T05:00:27.401884+00:00", "worker": "worker-A"}
+{"action": "PROCESSING", "event_id": "68876eb3-6f58-4367-b794-84339cca5333", "item_id": "item-001", "order_id": "order-001", "quantity": 1, "time": "2026-10-25T05:00:27.603449+00:00", "worker": "worker-A"}
+{"action": "PROCESSED", "event_id": "68876eb3-6f58-4367-b794-84339cca5333", "item_id": "item-001", "order_id": "order-001", "quantity": 1, "time": "2026-10-25T05:00:27.603681+00:00", "worker": "worker-A"}
+{"action": "ACK_SENT", "event_id": "68876eb3-6f58-4367-b794-84339cca5333", "time": "2026-10-25T05:00:27.603900+00:00", "worker": "worker-A"}
+{"action": "RECEIVED", "event_id": "2704a7ae-6b0f-44c3-94c1-53dd92817a6a", "item_id": "item-001", "order_id": "order-003", "quantity": 1, "redelivered": false, "time": "2026-10-25T05:00:27.605468+00:00", "worker": "worker-A"}
+{"action": "PROCESSING", "event_id": "2704a7ae-6b0f-44c3-94c1-53dd92817a6a", "item_id": "item-001", "order_id": "order-003", "quantity": 1, "time": "2026-10-25T05:00:27.807257+00:00", "worker": "worker-A"}
+{"action": "PROCESSED", "event_id": "2704a7ae-6b0f-44c3-94c1-53dd92817a6a", "item_id": "item-001", "order_id": "order-003", "quantity": 1, "time": "2026-10-25T05:00:27.807384+00:00", "worker": "worker-A"}
+{"action": "ACK_SENT", "event_id": "2704a7ae-6b0f-44c3-94c1-53dd92817a6a", "time": "2026-10-25T05:00:27.807827+00:00", "worker": "worker-A"}
+{"action": "RECEIVED", "event_id": "18a1b677-03bc-4643-852c-f23195dcdbe4", "item_id": "item-001", "order_id": "order-006", "quantity": 1, "redelivered": false, "time": "2026-10-25T05:00:27.808539+00:00", "worker": "worker-A"}
+{"action": "PROCESSING", "event_id": "18a1b677-03bc-4643-852c-f23195dcdbe4", "item_id": "item-001", "order_id": "order-006", "quantity": 1, "time": "2026-10-25T05:00:28.010272+00:00", "worker": "worker-A"}
+{"action": "PROCESSED", "event_id": "18a1b677-03bc-4643-852c-f23195dcdbe4", "item_id": "item-001", "order_id": "order-006", "quantity": 1, "time": "2026-10-25T05:00:28.010410+00:00", "worker": "worker-A"}
+{"action": "ACK_SENT", "event_id": "18a1b677-03bc-4643-852c-f23195dcdbe4", "time": "2026-10-25T05:00:28.010563+00:00", "worker": "worker-A"}
+{"action": "RECEIVED", "event_id": "duplicate-demo", "item_id": "item-001", "order_id": "order-001", "quantity": 1, "redelivered": false, "time": "2026-10-25T05:00:28.117289+00:00", "worker": "worker-A"}
+{"action": "PROCESSING", "event_id": "duplicate-demo", "item_id": "item-001", "order_id": "order-001", "quantity": 1, "time": "2026-10-25T05:00:28.318539+00:00", "worker": "worker-A"}
+{"action": "PROCESSED", "event_id": "duplicate-demo", "item_id": "item-001", "order_id": "order-001", "quantity": 1, "time": "2026-10-25T05:00:28.318649+00:00", "worker": "worker-A"}
+{"action": "ACK_SENT", "event_id": "duplicate-demo", "time": "2026-10-25T05:00:28.318749+00:00", "worker": "worker-A"}

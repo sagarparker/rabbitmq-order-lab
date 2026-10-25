@@ -1,0 +1,2 @@
+{"event_id": "failure-before-processing", "order_id": "order-001", "item_id": "item-001", "quantity": 1, "processed_by": "survivor-before-processing"}
+{"event_id": "followup-before-processing", "order_id": "order-001", "item_id": "item-001", "quantity": 1, "processed_by": "survivor-before-processing"}

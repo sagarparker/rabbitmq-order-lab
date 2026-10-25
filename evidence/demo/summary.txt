@@ -1,0 +1,19 @@
+Run: 2026-10-25T05:00:27.178190+00:00
+Python: 3.13.14
+RabbitMQ: 4.1.8
+BROKER queue=orders-demo-competition-249edf56 consumers=2
+PASS competing consumers: 6 unique deliveries; {'worker-A': 3, 'worker-B': 3}
+  order-001 event_id=68876eb3-6f58-4367-b794-84339cca5333 -> worker-A (once)
+  order-002 event_id=3f85b4e3-90b9-4f37-b499-3ae1f776fac4 -> worker-B (once)
+  order-003 event_id=2704a7ae-6b0f-44c3-94c1-53dd92817a6a -> worker-A (once)
+  order-004 event_id=842b88aa-b846-423c-a9dd-c629324ce405 -> worker-B (once)
+  order-005 event_id=3bf37a8a-35db-47f1-bc7b-fe454872e93c -> worker-B (once)
+  order-006 event_id=18a1b677-03bc-4643-852c-f23195dcdbe4 -> worker-A (once)
+PASS duplicate publication across workers: 2 deliveries, 1 business action, 1 DUPLICATE, 2 ACKs
+BROKER queue=orders-demo-before-processing-7565dd99 consumers=2
+PASS before-processing: first worker RECEIVED -> exit 42 without ACK -> survivor RECEIVED redelivered=true -> PROCESSED -> ACK_SENT
+PASS system remains running: survivor processed followup-before-processing; broker consumers=1 ready=0
+BROKER queue=orders-demo-after-processing-027bf9e6 consumers=2
+PASS after-processing: first worker RECEIVED -> exit 42 without ACK -> survivor RECEIVED redelivered=true -> DUPLICATE -> ACK_SENT
+PASS system remains running: survivor processed followup-after-processing; broker consumers=1 ready=0
+ALL CHECKS PASSED; demo workers stopped and isolated demo queues removed; RabbitMQ remains running.
